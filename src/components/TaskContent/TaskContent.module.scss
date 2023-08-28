@@ -1,0 +1,15 @@
+.container {
+  margin-top: 2rem;
+  max-width: 100%;
+
+  .headingBox {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      color: #000000;
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+}

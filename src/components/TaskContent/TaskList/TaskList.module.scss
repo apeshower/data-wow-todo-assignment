@@ -1,0 +1,49 @@
+.wrapper {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.625rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 9999px;
+  background: #fff;
+  filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.03));
+
+  &.editing {
+    padding: 5px 1.5rem;
+    padding-right: 0.375rem;
+  }
+}
+
+.editor {
+  flex-grow: 2;
+}
+
+.input {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+
+  &::placeholder {
+    color: #bcbcbc;
+    font-size: 1rem;
+  }
+}
+
+.title {
+  flex-grow: 2;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #2e2e2e;
+
+  &.checked {
+    color: #a9a9a9;
+    text-decoration-line: line-through;
+  }
+}
