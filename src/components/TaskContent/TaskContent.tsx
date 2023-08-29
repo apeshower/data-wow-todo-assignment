@@ -54,7 +54,7 @@ const TaskContent = () => {
           />
         </div>
       </div>
-      {filteredTodos.map((item: Todo, index: number) => (
+      {filteredTodos.length > 0 && filteredTodos.map((item: Todo, index: number) => (
         <FadeInUpWhenVisible
           duration={0.53}
           ease={"easeOut"}

@@ -29,7 +29,6 @@ export const useTodoContext = () => {
 };
 
 export const filterOptions = ["All", "Done", "Undone"];
-export const API_URL = "http://localhost:3001";
 
 export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
   const [todoLists, setTodoLists] = useState<Todo[]>([]);
@@ -56,7 +55,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
 
   const fetchTodoLists = async () => {
     try {
-      const res = await axios.get(API_URL, {
+      const res = await axios.get("http://localhost:3001/todos", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -83,8 +82,8 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       if (filterOption !== "Done") {
         setTodoLists((prevTodos) => [...prevTodos, newTodo]);
       }
-      const res = await axios.post(`${API_URL}/todos`, newTodo);
-      toast.success(`Added ${newTodo.title}`);
+      const res = await axios.post("http://localhost:3001/todos", newTodo);
+      toast.success(`Added ${newTodo.title}`)
       fetchTodoLists();
     } catch (error) {
       console.error("Error adding todo:", error);
@@ -101,7 +100,10 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
           todo.id === updatedTodo.id ? updatedTodo : todo
         )
       );
-      await axios.put(`${API_URL}/todos/${updatedTodo.id}`, updatedTodo);
+      await axios.put(
+        `http://localhost:3001/todos/${updatedTodo.id}`,
+        updatedTodo
+      );
     } catch (error) {
       console.error("Error updating todo:", error);
       toast.error("Error updating status");
@@ -115,7 +117,7 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
       setTodoLists((prevTodos) =>
         prevTodos.filter((todo) => todo.id !== todoId)
       );
-      await axios.delete(`${API_URL}/todos/${todoId}`);
+      await axios.delete(`http://localhost:3001/todos/${todoId}`);
       fetchTodoLists();
     } catch (error) {
       console.error("Error deleting todo:", error);
